@@ -3,16 +3,14 @@ package main
 import (
 	"log"
 
-	"iteung/config"
-
 	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/jasminemutiara03/gocroot/config"
 
 	"github.com/whatsauth/whatsauth"
 
-	"iteung/url"
-
 	"github.com/gofiber/fiber/v2"
+	"github.com/jasminemutiara03/gocroot/url"
 )
 
 func main() {

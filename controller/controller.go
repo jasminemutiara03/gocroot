@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"iteung/config"
+	"github.com/jasminemutiara03/gocroot/config"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
@@ -19,12 +19,11 @@ func PostWhatsAuthRequest(c *fiber.Ctx) error {
 		if err != nil {
 			return err
 		}
-		ntfbtn := whatsauth.RunModule(req, config.PrivateKey, config.Usertables[:], config.Ulbimariaconn)
+		ntfbtn := whatsauth.RunModuleLegacy(req, config.PrivateKey, config.Usertables[:], config.Ulbimariaconn)
 		return c.JSON(ntfbtn)
 	} else {
 		var ws whatsauth.WhatsauthStatus
 		ws.Status = string(c.Request().Host())
 		return c.JSON(ws)
 	}
-
 }
