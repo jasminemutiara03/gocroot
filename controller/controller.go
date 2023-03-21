@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
 	"github.com/jasminemutiara03/gocroot/config"
@@ -22,7 +23,10 @@ func Sink(c *fiber.Ctx) error {
 func WsWhatsAuthQR(c *websocket.Conn) {
 	whatsauth.RunSocket(c, config.PublicKey, config.Usertables[:], config.Ulbimariaconn)
 }
-
+func Homepage(c *fiber.Ctx) error {
+	ipaddr := musik.GetIPaddress()
+	return c.JSON(ipaddr)
+}
 func PostWhatsAuthRequest(c *fiber.Ctx) error {
 	if string(c.Request().Host()) == config.Internalhost {
 		var req whatsauth.WhatsauthRequest
