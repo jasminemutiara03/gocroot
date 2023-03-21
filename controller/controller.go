@@ -1,12 +1,23 @@
 package controller
 
 import (
-	"github.com/jasminemutiara03/gocroot/config"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
+	"github.com/jasminemutiara03/gocroot/config"
 	"github.com/whatsauth/whatsauth"
 )
+
+type HTTPRequest struct {
+	Header string `json:"header"`
+	Body   string `json:"body"`
+}
+
+func Sink(c *fiber.Ctx) error {
+	var req HTTPRequest
+	req.Header = string(c.Request().Header.Header())
+	req.Body = string(c.Request().Body())
+	return c.JSON(req)
+}
 
 func WsWhatsAuthQR(c *websocket.Conn) {
 	whatsauth.RunSocket(c, config.PublicKey, config.Usertables[:], config.Ulbimariaconn)
