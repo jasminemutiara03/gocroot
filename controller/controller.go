@@ -8,8 +8,6 @@ import (
 	"github.com/whatsauth/whatsauth"
 )
 
-var Rencanastd = "rencanastudi"
-
 type HTTPRequest struct {
 	Header string `json:"header"`
 	Body   string `json:"body"`
